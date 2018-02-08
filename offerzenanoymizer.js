@@ -24,13 +24,13 @@
 
   });
 
+  // Name on list view
 
   var cardHeaders = document.getElementsByClassName("card-header")
-
   Array.prototype.forEach.call(cardHeaders, function(element) {
   	// Name 
 
-  	element.innerText = "A human just like you";
+  	element.innerText = "A human just like you"
 
   	// https://stackoverflow.com/a/6520270/8524
  //  	for (var i = 0; i < element.childNodes.length; i++) {
@@ -42,3 +42,29 @@
 	// }
 
   });
+
+
+  // Name on details view
+
+  var cardHeaders = document.getElementsByClassName("card-content")
+  Array.prototype.forEach.call(cardHeaders, function(element) {
+  	// Name 
+  	// console.log(element.childNodes.length)
+  	if (element.childNodes.length > 0){
+  		console.log("testing")
+  		console.log(element.childNodes[0])
+  		console.log(element.childNodes[0].nodeName)
+  		console.log(element.childNodes[0].innerText)
+  		//element.childNodes[0].innerText = "A human just like you"
+  	}
+
+  	var mutationConfig = {childList: true}
+
+  	element
+
+//  	element.innerText = "ddddddddddddddddddddddd"
+
+  });
+
+
+
