@@ -5,6 +5,8 @@
 		Initial load sometiems still shows profile picture.
 		Show enabled/disabled on UI
 		Would be nice to have same random cat picture for list view as details view
+		replace UGLY icon
+		Make dog API an option
 
 
 */
