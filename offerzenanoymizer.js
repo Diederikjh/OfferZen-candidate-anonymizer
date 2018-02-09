@@ -1,9 +1,3 @@
-  // chrome.extension.onRequest.addListener(function(req, sender, sendResponse) {
-  //   console.log("Hallo?");
-  // });
-
-  console.log("Hi!")
-
   // Profile images
 
   var profileImages = document.getElementsByClassName("profile-image")
@@ -28,43 +22,56 @@
 
   var cardHeaders = document.getElementsByClassName("card-header")
   Array.prototype.forEach.call(cardHeaders, function(element) {
+  	// TODO only replace name, not entire diff
   	// Name 
-
-  	element.innerText = "A human just like you"
+  	//element.innerText = "A human just like you"
 
   	// https://stackoverflow.com/a/6520270/8524
- //  	for (var i = 0; i < element.childNodes.length; i++) {
- //    var curNode = element.childNodes[i];
-	//     if (curNode.nodeName === "#text") {
-	//         curNode.innerText = "A human just like you";
-	//         console.log("Replacing inner text")
-	//     }
-	// }
+  	for (var i = 0; i < element.childNodes.length; i++) {
+	    var curNode = element.childNodes[i];
+		    if (curNode.nodeName === "#text") {
+		        curNode.nodeValue = "A human just like you";
+		        console.log("Replacing inner text")
+		        break;
+		    }
+		}
 
   });
 
 
   // Name on details view
-
   var cardHeaders = document.getElementsByClassName("card-content")
   Array.prototype.forEach.call(cardHeaders, function(element) {
   	// Name 
-  	// console.log(element.childNodes.length)
-  	if (element.childNodes.length > 0){
-  		console.log("testing")
-  		console.log(element.childNodes[0])
-  		console.log(element.childNodes[0].nodeName)
-  		console.log(element.childNodes[0].innerText)
-  		//element.childNodes[0].innerText = "A human just like you"
-  	}
-
-  	var mutationConfig = {childList: true}
-
-  	element
-
-//  	element.innerText = "ddddddddddddddddddddddd"
-
+  	console.log(element.childNodes.length)
+	for (var i = 0; i < element.childNodes.length; i++) {
+		if (element.childNodes[i].nodeName === "H3") {
+			element.childNodes[i].innerText = "A human just like you"
+			break;
+		}
+	}
   });
 
+  // Replace name in title
+  document.title.replace(/.* - /, "")
+
+
+var replacementUniversityText = "University of Somewhere"
+// Hide university names
+var education = document.getElementsByClassName("education")
+  Array.prototype.forEach.call(education, function(element) {
+  	// Name 
+  	console.log(element.childNodes.length)
+	for (var i = 0; i < element.childNodes.length; i++) {
+		if (element.childNodes[i].nodeName === "#text") {
+			if (element.childNodes[i].nodeValue) {
+				element.childNodes[i].nodeValue = element.childNodes[i].nodeValue.replace(/.*University.*/, replacementUniversityText)
+				element.childNodes[i].nodeValue = element.childNodes[i].nodeValue.replace(/Unisa/, replacementUniversityText)
+			}
+		}
+	}
+  });
+
+//  TODO replace elements added dynamically on listview
 
 
